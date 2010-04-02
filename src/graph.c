@@ -1,6 +1,6 @@
-/*	Copyright 2010 Stefan Elmlund
+/*  Copyright 2010 Stefan Elmlund
 
-	This file is part of Virtual Tuner.
+    This file is part of Virtual Tuner.
 
     Virtual Tuner is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
 // draw the wu line (anialized line)
 void WuLine(HWND hwnd, uint32_t *buf, int x1, int y1, int x2, int y2, rgb_t color)
 {
-	RECT rect;
-	GetClientRect(hwnd, &rect);
+    RECT rect;
+    GetClientRect(hwnd, &rect);
 
     uint16_t error_adj, error_acc, error_acc_tmp;
     int32_t dx, dy, xstep;
@@ -61,7 +61,7 @@ void WuLine(HWND hwnd, uint32_t *buf, int x1, int y1, int x2, int y2, rgb_t colo
         if      (x2 < 0)      code2 |= 4; // left
         else if (x2 > width)  code2 |= 8; // right
 
-		// line not visable
+	    // line not visable
         if((code1 & code2) != 0) {
             return;
         }

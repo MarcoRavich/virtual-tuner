@@ -1,6 +1,6 @@
-/*	Copyright 2010 Stefan Elmlund
+/*  Copyright 2010 Stefan Elmlund
 
-	This file is part of Virtual Tuner.
+    This file is part of Virtual Tuner.
 
     Virtual Tuner is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,12 +28,12 @@
 
 typedef struct
 {
-	double targetFreq;
-	double currentFreq;
-	char note;
-	char number;
-	char sharp;
-	void *notePtr;
+    double targetFreq;
+    double currentFreq;
+    char note;
+    char number;
+    char sharp;
+    void *notePtr;
 } FreqMeterUpdateMsg;
 
 // Initialize and register the freq meter control

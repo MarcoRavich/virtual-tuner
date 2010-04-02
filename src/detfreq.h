@@ -1,6 +1,6 @@
-/*	Copyright 2010 Stefan Elmlund
+/*  Copyright 2010 Stefan Elmlund
 
-	This file is part of Virtual Tuner.
+    This file is part of Virtual Tuner.
 
     Virtual Tuner is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,40 +26,40 @@
 #include "notetbl.h"
 
 /*! Invoke hamming window on the given signal
-	@param: pointer to a normalized signal
-	@param: number of sampled in the signal
+    @param: pointer to a normalized signal
+    @param: number of sampled in the signal
 */
 inline
 void HammingWindow(double *signal, size_t n) {
-	for(int i=0; i<n; i++) {
-		signal[i] = signal[i] * (0.54 - 0.46 * cos(2*M_PI*i/n));
-	}
+    for(int i=0; i<n; i++) {
+        signal[i] = signal[i] * (0.54 - 0.46 * cos(2*M_PI*i/n));
+    }
 }
 
 /*! Normalize the interger value
     @param: pointer to the wavein structure
-	@param: reslut normalized signal
-	@param: size of the result signal
+    @param: reslut normalized signal
+    @param: size of the result signal
 
-	@note: result buffer needs to be >= waveIn->n!
+    @note: result buffer needs to be >= waveIn->n!
 */
 inline
 void WaveInNormalize(WaveIn *waveIn, double *result, size_t n) {
-	// do the normalization
-	int16_t *data = (int16_t *)waveIn->data;
-	for(size_t i=0; i<n; i++)
-	{
-		result[i] = data[i] / 32768.0;
-	}
+    // do the normalization
+    int16_t *data = (int16_t *)waveIn->data;
+    for(size_t i=0; i<n; i++)
+    {
+        result[i] = data[i] / 32768.0;
+    }
 }
 
 /*! Invoke the Goerzel filter on the given signal
-	@param: pointer to a normalized signal
-	@param: number of sampled in the signal
-	@param: target frequency to detect
-	@return: nearest value
+    @param: pointer to a normalized signal
+    @param: number of sampled in the signal
+    @param: target frequency to detect
+    @return: nearest value
 
-	@note: nearest value should be as high as possible
+    @note: nearest value should be as high as possible
 */
 double GoertzelFilter(double *signal, size_t n, double targetFreq);
 

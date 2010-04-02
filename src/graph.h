@@ -1,6 +1,6 @@
-/*	Copyright 2010 Stefan Elmlund
+/*  Copyright 2010 Stefan Elmlund
 
-	This file is part of Virtual Tuner.
+    This file is part of Virtual Tuner.
 
     Virtual Tuner is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,10 +26,10 @@
 
 typedef struct
 {
-	uint8_t b;
-	uint8_t g;
-	uint8_t r;
-	uint8_t a;
+    uint8_t b;
+    uint8_t g;
+    uint8_t r;
+    uint8_t a;
 } rgb_t;
 
 /** draw wu line on a background window
