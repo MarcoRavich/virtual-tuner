@@ -35,26 +35,33 @@ BOOL CALLBACK MainDlgProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
     case WM_CLOSE:
         PostQuitMessage(0);
         break;
+
     // new data in the in the wave input
     case WIM_DATA:
         // check if the wave in buffer is full
-        if( waveIn->header.dwFlags & WHDR_DONE ) {
+        if( waveIn->header.dwFlags & WHDR_DONE )
+        {
+            // stop the current wave
             waveInStop(waveIn->handler);
+
             // normalize the signal and copy the buffer to signal buffer
             double signal[WAVEIN_SAMPLE_SIZE];
             size_t bytsRecs = waveIn->header.dwBytesRecorded >> 2;
             WaveInNormalize(waveIn, signal, bytsRecs);
 			
-            // there is now a copy of the orignal signal so it can be restarted			// restart the wave in
-            WaveInStart(waveIn, TRUE);
+            // there is now a copy of the orignal signal so it can be restarted
+            // the wave in recodring
             WaveInStart(waveIn, TRUE);
 
             // apply hamming window to the signal
             HammingWindow(signal, WAVEIN_SAMPLE_SIZE);
+
             // find the closest note frequency
             NoteTblNode *target = FindClosestFrequency(signal, bytsRecs);
+
             // detect the frequency from the signal
             double detFreq = DetectFrequency(signal, bytsRecs, target->freq);
+
             // update the frequency meter
             FreqMeterUpdateMsg msg;
             msg.targetFreq = target->freq;
@@ -66,10 +73,12 @@ BOOL CALLBACK MainDlgProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
             SendMessage(GetDlgItem(hwnd, ID_FREQMETER), FMM_UPDATE, 0, (LPARAM)&msg);
         }
         break;
-        // message not handled by this function
-        default:
-            return FALSE;
+
+    // message not handled by this function
+    default:
+        return FALSE;
     }
+
     // message have been handled by this function
     return TRUE;
 }
@@ -86,7 +95,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     HICON icon = LoadIcon(hInstance, MAKEINTRESOURCE(ID_ICON));
     SendMessage(hwnd, WM_SETICON, ICON_BIG, (WPARAM)icon);
 
-    // opend wave in for recoding of sound
+    // open the wavein for recoding of sound
     waveIn = WaveInOpen(hwnd, WAVEIN_SAMPLE_SIZE);
     if(waveIn == NULL)
     {

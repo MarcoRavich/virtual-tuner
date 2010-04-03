@@ -29,12 +29,12 @@ double GoertzelFilter(double *signal, size_t n, double targetFreq)
     double q1 = 0;
     double q2 = 0;
 
-	for(size_t i=0; i<n; i++)
-	{
+    for(size_t i=0; i<n; i++)
+    {
         double q0 = signal[i] + coeff*q1 - q2;
         q2 = q1;
         q1 = q0;
-	}
+    }
 
     double real = 0.5*coeff*q1 - q2;
     double imag = sin((2.0*M_PI*k)/n)*q1;
@@ -44,8 +44,10 @@ double GoertzelFilter(double *signal, size_t n, double targetFreq)
 
 NoteTblNode *FindClosestFrequency(double *signal, size_t n)
 {
-    NoteTblNode *node = &NoteTbl[0]; // pointer to the node with the bigest value
+    // pointer to the node with the bigest value
+    NoteTblNode *node = &NoteTbl[0];
     double max = GoertzelFilter(signal, n, node->freq);
+
     // iterate the note table to find the closes frequency for the node
     NoteTblNode *itr = &NoteTbl[1];
     while(itr->note != '\0')
@@ -58,7 +60,7 @@ NoteTblNode *FindClosestFrequency(double *signal, size_t n)
         }
         itr++;
     }
-    // return the pointer to the node with the closes
+    // return the pointer to the node with the closes frequency
     return node;
 }
 

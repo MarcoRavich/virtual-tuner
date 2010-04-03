@@ -30,7 +30,7 @@ typedef struct
 {
     double targetFreq;
     double currentFreq;
-	// note string
+    // note string
     char note;
     char number;
     char sharp;
@@ -79,7 +79,8 @@ LRESULT CALLBACK FreqMeterCtrlProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
         // set the data at the window extra
         SetWindowLong(hwnd, 0, (LONG)data);
         } break;
-    // last message called
+
+    // last message called to the control
     case WM_NCDESTROY: {
         // get the control data
         FreqMeterCtrlData *data = (FreqMeterCtrlData *)GetWindowLong(hwnd, 0);
@@ -94,6 +95,7 @@ LRESULT CALLBACK FreqMeterCtrlProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
         // free memory for the control data
         HeapFree(GetProcessHeap(), 0, data);
         } break;
+
     // called after the window have been displayed (or resized)
     case WM_SIZE:
         {
@@ -128,6 +130,7 @@ LRESULT CALLBACK FreqMeterCtrlProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
                 ReleaseDC(hwnd, hdc);
             }
         } break;
+
     // called when the control needs to redraw
     case WM_PAINT: 
         {
@@ -271,7 +274,7 @@ LRESULT CALLBACK FreqMeterCtrlProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
             FreqMeterCtrlData *data = (FreqMeterCtrlData *)GetWindowLong(hwnd, 0);
             // get the message structure
             FreqMeterUpdateMsg *msg = (FreqMeterUpdateMsg *)lparam;
-            // have the target note been changed seans last frequency?
+            // have the target note been changed sense last frequency?
             if( data->notePtr == msg->notePtr )
             {
                 // add the sample in the message to the cumalated freq.
@@ -309,9 +312,9 @@ LRESULT CALLBACK FreqMeterCtrlProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lp
                 data->cumlFreq = msg->currentFreq;
                 data->notePtr = msg->notePtr;
             }
-            // case stament FFM_UPDATE end
         } break;
-    // message not handled by this procedure, call the default procedure.
+
+    // message have not been handle by this procedure, call the default procedure.
     default:
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }

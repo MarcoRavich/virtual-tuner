@@ -123,7 +123,7 @@ void WuLine(HWND hwnd, uint32_t *buf, int x1, int y1, int x2, int y2, rgb_t colo
         }
     } while(done != 1);
 
-    // Draw an antialiasing line using Xiaolin Wu's line algotithm
+    // draw an antialiasing line using Xiaolin Wu's line algotithm
     // do not draw line with zero length
     if(x1 == x2 && y1 == y2) {
         return;
