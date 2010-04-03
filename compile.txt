@@ -1,0 +1,13 @@
+To compile and link this project you need Pellec C.
+Pelles C can be downloaded from:
+
+  http://www.smorgasbordet.com/pellesc/
+
+In Pelles C ide, open the project file "virtual-tuner.ppj".
+
+-----------------------------------------------------------
+
+To create the setup file you need NSIS (Nullsoft Scriptable Install System).
+NSIS can be downloaded from:
+
+  http://nsis.sourceforge.net/

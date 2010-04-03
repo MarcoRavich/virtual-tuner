@@ -102,9 +102,10 @@ output\resource.res: \
 	res\icon.ico
 	$(RC) $(RCFLAGS) "$!" -Fo"$@"
 
-.OTHERFILES: \
-	license.txt
+.EXCLUDEDFILES:
 
 .SILENT:
 
-.EXCLUDEDFILES:
+.OTHERFILES: \
+	license.txt \
+	compile.txt
