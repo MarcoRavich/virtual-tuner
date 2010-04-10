@@ -14,7 +14,7 @@ InstallDir "$PROGRAMFILES\Virtual Tuner"
 ; overwrite the old one automatically)
 InstallDirRegKey HKLM SOFTWARE\Virtual_Tuner "Install_Dir"
 
-LicenseData "copyright.txt"
+LicenseData "..\license.txt"
 LicenseText "GNU General Public License"
 
 ; Request application privileges for Windows Vista
