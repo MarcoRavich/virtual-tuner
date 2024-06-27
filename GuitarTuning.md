@@ -4,7 +4,7 @@ You will need a PC with Windows operation system like XP, Vista or Windows 7 and
 
 Start the program and you will see a frequency meter with the closes note detected, its target frequency and a needle indicating how far the detect frequency is (as shown in the screenshot below)
 
-imm
+![virtual-tuner](https://github.com/MarcoRavich/virtual-tuner/assets/171307/0d6c0696-e33c-43b8-8296-c71963978d46)
 
 The open string of a guitar from the thinnes to the thickest are as follows:
 - E(4): thinnest and highest is the 1th
