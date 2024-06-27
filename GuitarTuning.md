@@ -1,6 +1,6 @@
 This document descibes how to tune a guitar with the Virtual Tuner software.
 
-You will need a PC with Windows operation system like XP, Vista or Windows 7 and a microphone, first install the software by downloading it from here, accept the "unknown publisher" and run and follow the step in the installer.
+You will need a PC with Windows operation system like XP, Vista or Windows 7 and a microphone, first install the software by downloading it from [here](https://github.com/MarcoRavich/virtual-tuner/blob/master/binaries/virtual-tuner-setup-v1.0-x86.exe), accept the "unknown publisher" and run and follow the step in the installer.
 
 Start the program and you will see a frequency meter with the closes note detected, its target frequency and a needle indicating how far the detect frequency is (as shown in the screenshot below)
 
